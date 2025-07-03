@@ -1,0 +1,383 @@
+/* CSS untuk Styling (Point 3 & 8) */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    /* Hapus overflow: hidden; di sini. Kita akan mengaturnya via JS */
+}
+
+/* --- Styling untuk Animasi Pembuka (Buku Slide) --- */
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #360000; /* Warna latar belakang sama dengan header */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Pastikan di atas semua elemen */
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 1s ease-out, visibility 1s step-end; /* Fade out lambat */
+}
+
+#loading-overlay.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loading-book {
+    width: 150px; /* Ukuran gambar buku */
+    height: auto;
+    animation: slideBook 2s ease-in-out forwards; /* Animasi slide buku */
+    /* Menambahkan placeholder image untuk buku, Anda bisa menggantinya dengan gambar buku asli */
+    content: url('./download-removebg-preview.png');
+}
+
+@keyframes slideBook {
+    0% {
+        transform: translateX(-200vw) rotate(-30deg); /* Mulai jauh di kiri, sedikit miring */
+        opacity: 0;
+    }
+    30% {
+        transform: translateX(-50vw) rotate(0deg); /* Bergerak ke tengah, tegak */
+        opacity: 1;
+    }
+    70% {
+        transform: translateX(50vw) rotate(0deg); /* Terus bergerak melewati tengah */
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(200vw) rotate(30deg); /* Berakhir jauh di kanan, sedikit miring */
+        opacity: 0;
+    }
+}
+
+
+/* Header Styling */
+header {
+    background-color: #360000; /* Warna merah marun gelap */
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /* Tambahkan ini agar z-index bekerja */
+    z-index: 100; /* Pastikan di atas konten utama, di bawah loading-overlay */
+}
+/* ... (kode CSS lainnya tetap sama) ... */
+header .logo {
+    height: 110px; /* Ukuran logo */
+    margin-right: 15px;
+}
+
+/* Mengubah src logo placeholder agar lebih sesuai */
+header .logo[alt="Logo Aplikasi"] {
+    content: url('WhatsApp_Image_2025-07-03_at_19.42.48_f26a2d3a-removebg-preview.png'); /* Gambar placeholder yang lebih sesuai */
+    object-fit: contain; /* Menjaga rasio aspek */
+}
+
+
+header .app-title {
+    font-size: 1 em; /* Ukuran judul aplikasi diubah menjadi lebih kecil (dari 1.8em) */
+    color: #f0f0f0; /* Warna teks judul disesuaikan */
+    margin: 0;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Menu horizontal */
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 15px; /* Padding ditingkatkan untuk tombol */
+    border-radius: 5px;
+    /* Menambahkan transisi untuk semua properti yang berubah, selama 0.3 detik dengan efek ease */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Styling untuk link navigasi standar */
+header nav ul li a.nav-link:not(.btn-nav):hover,
+header nav ul li a.nav-link:not(.btn-nav).active {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px); /* Sedikit naik saat hover/active */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Efek bayangan */
+}
+
+/* Styling untuk tombol Login dan Daftar */
+header nav ul li a.btn-nav {
+    background-color: transparent; /* Default transparan */
+    border: 2px solid white; /* Border putih */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: normal; /* Font weight normal */
+    /* Menambahkan transisi untuk semua properti yang berubah */
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Warna spesifik untuk tombol Login */
+header nav ul li a.login-btn {
+    background-color: #b00000; /* Merah marun terang */
+    border: none; /* Hilangkan border untuk tombol login */
+}
+
+header nav ul li a.login-btn.active {
+    background-color: #b00000; /* Warna sedikit lebih gelap saat aktif/hover */
+    transform: translateY(-2px); /* Sedikit naik saat aktif */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Warna spesifik untuk tombol Daftar */
+header nav ul li a.daftar-btn {
+    background-color: #b00000; /* Biru */
+    border: none; /* Hilangkan border untuk tombol daftar */
+}
+
+header nav ul li a.daftar-btn.active {
+    background-color: #b00000; /* Warna sedikit lebih gelap saat aktif/hover */
+    transform: translateY(-2px); /* Sedikit naik saat aktif */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Hover state untuk tombol login/daftar */
+header nav ul li a.btn-nav:hover {
+    opacity: 0.9; /* Sedikit transparan saat dihover */
+    transform: translateY(-2px); /* Sedikit naik saat hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Efek bayangan */
+}
+
+/* Animasi untuk perpindahan halaman (opsional, jika Anda ingin efek fading pada konten) */
+.page {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.page.active {
+    opacity: 1;
+}
+
+
+/* Main Content Styling */
+main {
+    padding: 20px;
+    min-height: calc(100vh - 140px); /* Ketinggian minimal agar footer di bawah */
+}
+
+section {
+    background-color: white;
+    padding: 30px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="email"],
+form input[type="password"],
+form textarea,
+form select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box; /* Agar padding tidak menambah lebar */
+}
+
+form button {
+    background-color: #b00000;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #b00000;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    display: none; /* Sembunyikan secara default */
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #360000; /* Warna abu-abu gelap */
+    color: white;
+    text-align: center;
+    padding: 15px 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsivitas (Point 8) */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    header nav ul {
+        flex-direction: column;
+        margin-top: 15px;
+    }
+    header nav ul li {
+        margin: 5px 0;
+    }
+    main {
+        padding: 10px;
+    }
+    section {
+        padding: 20px;
+    }
+    /* Responsivitas untuk Pencarian BUDI */
+    .filter-group {
+        flex-direction: column;
+    }
+    .filter-item {
+        width: 100%;
+    }
+}
+
+/* --- Styling untuk Tampilan Pencarian BUDI (Beranda Baru) --- */
+.search-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    max-width: 800px;
+    margin: 20px auto; /* Pusatkan container */
+}
+
+.search-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.filter-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Agar responsif pada layar kecil */
+}
+
+.filter-item {
+    flex: 1; /* Distribusikan ruang secara merata */
+    min-width: 180px; /* Lebar minimum untuk setiap filter */
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-item label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.filter-item select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    appearance: none; /* Hilangkan panah default pada select */
+    background: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007bff%22%20d%3D%22M287%2069.1l-11.4-11.4c-2-2-5.1-2-7.1%200L146.2%20188.5%2023.5%2057.7c-2-2-5.1-2-7.1%200L5%2069.1c-2%202-2%205.1%200%207.1l137.9%20137.9c2%202%205.1%202%207.1%200l137.9-137.9c2-2%202-5.1%200-7.1z%22%2F%3E%3C%2Fsvg%3E') no-repeat right 10px center;
+    background-size: 12px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+
+.keyword-input {
+    margin-bottom: 25px;
+}
+
+.keyword-input label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+    color: #555;
+}
+
+.input-plain input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+}
+
+
+.search-button {
+    display: block;
+    width: fit-content;
+    padding: 12px 40px;
+    margin: 0 auto 30px auto;
+    background-color: #b00000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #333;
+    transform: translateY(-2px); /* Sedikit naik saat hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Efek bayangan */
+}

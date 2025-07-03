@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEMBATAN ILMU.ID</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="loading-overlay">
+        <img src="./WhatsApp_Image_2025-07-03_at_19.42.48_f26a2d3a-removebg-preview.png" alt="Loading Book" class="loading-book">
+    </div>
+    <header>
+        <div style="display: flex; align-items: center;">
+            <img src="./WhatsApp_Image_2025-07-03_at_19.42.48_f26a2d3a-removebg-preview.png" alt="Logo Aplikasi" class="logo">
+            <h1 class="app-title">JEMBATAN ILMU.ID</h1></center>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#beranda" class="nav-link active" data-target="beranda">Beranda</a></li>
+                <li><a href="#transaksi" class="nav-link" data-target="transaksi">Transaksi</a></li>
+                <li><a href="#profil" class="nav-link" data-target="profil">Profil</a></li>
+                <li><a href="#panduan" class="nav-link" data-target="panduan">Panduan</a></li>
+                <li><a href="#login" class="nav-link btn-nav login-btn" data-target="login">Login</a></li>
+                <li><a href="#daftar" class="nav-link btn-nav daftar-btn" data-target="daftar">Daftar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="beranda" class="page active">
+            <div class="search-container">
+                <h2>Pencarian Buku</h2>
+                <div class="filter-group">
+                    <div class="filter-item">
+                        <label for="jenjang">Jenjang</label>
+                        <select id="jenjang">
+                            <option value="">Semua Jenjang</option>
+                            <option value="paud">PAUD</option>
+                            <option value="sd">SD</option>
+                            <option value="smp">SMP</option>
+                            <option value="sma">SMA/SMK</option>
+                            <option value="umum">Umum</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <label for="tema">Tema</label>
+                        <select id="tema">
+                            <option value="">Semua Tema</option>
+                            <option value="sains">Sains & Teknologi</option>
+                            <option value="sejarah">Sejarah & Budaya</option>
+                            <option value="fiksi">Fiksi & Sastra</option>
+                            <option value="pendidikan">Pendidikan & Pengajaran</option>
+                            <option value="bisnis">Bisnis & Ekonomi</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <label for="bahasa">Bahasa</label>
+                        <select id="bahasa">
+                            <option value="">Semua Bahasa</option>
+                            <option value="indonesia">Bahasa Indonesia</option>
+                            <option value="inggris">Bahasa Inggris</option>
+                            <option value="mandarin">Bahasa Mandarin</option>
+                            <option value="jepang">Bahasa Jepang</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <label for="format">Format</label>
+                        <select id="format">
+                            <option value="">Semua Kategori</option>
+                            <option value="buku">Buku Digital</option>
+                            <option value="jurnal">Jurnal Ilmiah</option>
+                            <option value="artikel">Artikel</option>
+                            <option value="audio">Audio Book</option>
+                            <option value="video">Video Edukasi</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="keyword-input">
+                    <label for="kataKunci">Kata Kunci</label>
+                    <div class="input-plain">
+                        <input type="text" id="kataKunci" placeholder="Masukan kata kunci yang akan dicari...">
+                    </div>
+                </div>
+                <button class="search-button">CARI</button>
+            </div>
+        </section>
+
+        <section id="transaksi" class="page" style="display:none;">
+            <h2>Halaman Transaksi</h2>
+            <form id="transaksiForm">
+                <div>
+                    <label for="namaTransaksi">Nama Transaksi:</label>
+                    <input type="text" id="namaTransaksi" name="namaTransaksi" required>
+                    <div class="error-message" id="errorNamaTransaksi">Nama Transaksi harus diisi.</div>
+                </div>
+                <div>
+                    <label for="jumlah">Jumlah:</label>
+                    <input type="number" id="jumlah" name="jumlah" required min="0">
+                    <div class="error-message" id="errorJumlah">Jumlah harus diisi dan berupa angka.</div>
+                </div>
+                <div>
+                    <label for="kategori">Kategori:</label>
+                    <select id="kategori" name="kategori" required>
+                        <option value="">-- Pilih Kategori --</option>
+                        <option value="pemasukan">Pemasukan</option>
+                        <option value="pengeluaran">Pengeluaran</option>
+                        <option value="investasi">Investasi</option>
+                    </select>
+                    <div class="error-message" id="errorKategori">Kategori harus dipilih.</div>
+                </div>
+                <button type="submit">Simpan Transaksi</button>
+            </form>
+
+            <h3 style="margin-top: 30px;">Daftar Transaksi</h3>
+            <a href="#daftar-transaksi" class="nav-link" data-target="daftar-transaksi" style="display: block; margin-bottom: 15px;">Lihat Daftar Transaksi Lengkap</a>
+            <table id="daftarTransaksiTable">
+                <thead>
+                    <tr>
+                        <th>Nama Transaksi</th>
+                        <th>Jumlah</th>
+                        <th>Kategori</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </section>
+
+        <section id="daftar-transaksi" class="page" style="display:none;">
+            <h2>Daftar Transaksi Lengkap</h2>
+            <p>Berikut adalah semua transaksi yang telah Anda simpan:</p>
+            <table id="fullDaftarTransaksiTable">
+                <thead>
+                    <tr>
+                        <th>Nama Transaksi</th>
+                        <th>Jumlah</th>
+                        <th>Kategori</th>
+                        <th>Tanggal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+            <button onclick="showPage('transaksi')" style="margin-top: 20px;">Kembali ke Halaman Transaksi</button>
+        </section>
+
+
+        <section id="profil" class="page" style="display:none;">
+            <h2>Tentang Jembatan Ilmu</h2>
+            <p>Selamat datang di **Jembatan Ilmu**, sebuah platform perpustakaan digital inovatif yang didirikan pada tahun **2025**. Kami hadir dengan satu visi mulia dan kuat: **"Mencerdaskan Generasi Muda."**</p>
+            <p>Di era digital yang terus berkembang pesat, akses terhadap informasi dan pengetahuan menjadi kunci utama bagi kemajuan sebuah bangsa. Jembatan Ilmu dibangun sebagai respons atas kebutuhan tersebut, menyediakan jembatan penghubung antara generasi muda Indonesia dengan sumber daya literasi yang tak terbatas.</p>
+            <p>Kami berkomitmen untuk menjadi pusat pengetahuan daring yang komprehensif, menyediakan koleksi buku digital, jurnal ilmiah, artikel, dan materi edukasi dari berbagai disiplin ilmu yang dapat diakses kapan saja dan di mana saja. Dengan teknologi terkini, Jembatan Ilmu didesain untuk memberikan pengalaman membaca dan belajar yang intuitif, interaktif, dan menyenangkan.</p>
+            <p>Melalui Jembatan Ilmu, kami berharap dapat:</p>
+            <ul>
+                <li>Meningkatkan minat baca dan literasi di kalangan generasi muda.</li>
+                <li>Memfasilitasi pembelajaran mandiri dan penelitian.</li>
+                <li>Menyediakan akses merata terhadap pendidikan berkualitas tinggi, terlepas dari lokasi geografis.</li>
+                <li>Membentuk individu-individu yang kritis, kreatif, dan berpengetahuan luas, siap menghadapi tantangan masa depan.</li>
+            </ul>
+            <p>Bergabunglah bersama kami di Jembatan Ilmu, dan mari bersama-sama kita bangun masa depan yang lebih cerdas dan tercerahkan bagi generasi penerus bangsa!</p>
+        </section>
+
+        <section id="panduan" class="page" style="display:none;">
+            <h2>Panduan Penggunaan Website</h2>
+            <p>Selamat datang di halaman panduan penggunaan website **Jembatan Ilmu.id**.</p>
+            <p>Berikut adalah langkah-langkah dasar untuk membantu Anda menavigasi dan memanfaatkan fitur-fitur utama kami:</p>
+
+            <h3>1. Navigasi Utama</h3>
+            <ul>
+                <li>**Beranda:** Halaman utama tempat Anda dapat menemukan fitur pencarian buku untuk mencari berbagai sumber daya.</li>
+                <li>**Transaksi:** Untuk mencatat transaksi atau melihat riwayat transaksi Anda.</li>
+                <li>**Profil:** Informasi tentang platform Jembatan Ilmu.id.</li>
+                <li>**Panduan:** Halaman yang sedang Anda baca ini.</li>
+                <li>**Login:** Masuk ke akun Anda.</li>
+                <li>**Daftar:** Buat akun baru jika Anda belum memiliki.</li>
+            </ul>
+
+            <h3>2. Pencarian Buku</h3>
+            <p>Pada halaman beranda, Anda dapat mencari sumber daya dengan beberapa filter:</p>
+            <ul>
+                <li>**Jenjang:** Pilih jenjang pendidikan (PAUD, SD, SMP, SMA/SMK, Umum).</li>
+                <li>**Tema:** Filter berdasarkan tema (Sains & Teknologi, Sejarah & Budaya, dll.).</li>
+                <li>**Bahasa:** Pilih bahasa sumber daya.</li>
+                <li>**Format:** Pilih jenis format materi (Buku Digital, Jurnal Ilmiah, Artikel, dll.).</li>
+                <li>**Kata Kunci:** Masukkan kata atau frasa spesifik untuk mencari.</li>
+            </ul>
+            <p>Klik tombol **CARI** untuk memulai pencarian.</p>
+
+            <h3>3. Pendaftaran dan Login</h3>
+            <p>Untuk mengakses fitur-fitur tertentu atau menyimpan preferensi, Anda perlu membuat akun atau login:</p>
+            <ul>
+                <li>Klik **Daftar** untuk mengisi formulir pendaftaran.</li>
+                <li>Setelah mendaftar, Anda bisa **Login** menggunakan username dan password Anda.</li>
+            </ul>
+
+            <h3>4. Fitur Lainnya</h3>
+            <p>Jelajahi menu lain seperti "Transaksi" untuk manajemen keuangan sederhana Anda atau "Profil" untuk mengetahui lebih banyak tentang visi misi kami.</p>
+
+            <p>Jika Anda memiliki pertanyaan lebih lanjut, jangan ragu untuk menghubungi dukungan pelanggan kami melalui email: <a href="mailto:support@jembatanilmu.id">support@jembatanilmu.id</a></p>
+        </section>
+
+
+        <section id="login" class="page" style="display:none;">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div>
+                    <label for="loginUsername">Username:</label>
+                    <input type="text" id="loginUsername" name="username" required>
+                    <div class="error-message" id="errorLoginUsername">Username harus diisi.</div>
+                </div>
+                <div>
+                    <label for="loginPassword">Password:</label>
+                    <input type="password" id="loginPassword" name="password" required>
+                    <div class="error-message" id="errorLoginPassword">Password harus diisi.</div>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <p style="margin-top: 15px;">Belum punya akun? <a href="#daftar" class="nav-link" data-target="daftar">Daftar di sini</a></p>
+        </section>
+
+        <section id="daftar" class="page" style="display:none;">
+            <h2>Daftar Akun Baru</h2>
+            <form id="daftarForm">
+                <div>
+                    <label for="daftarNamaLengkap">Nama Lengkap:</label>
+                    <input type="text" id="daftarNamaLengkap" name="namaLengkap" required>
+                    <div class="error-message" id="errorDaftarNamaLengkap">Nama Lengkap harus diisi.</div>
+                </div>
+                <div>
+                    <label for="daftarEmail">Email:</label>
+                    <input type="email" id="daftarEmail" name="email" required>
+                    <div class="error-message" id="errorDaftarEmail">Email harus diisi dan valid.</div>
+                </div>
+                <div>
+                    <label for="daftarUsername">Username:</label>
+                    <input type="text" id="daftarUsername" name="username" required>
+                    <div class="error-message" id="errorDaftarUsername">Username harus diisi.</div>
+                </div>
+                <div>
+                    <label for="daftarPassword">Password:</label>
+                    <input type="password" id="daftarPassword" name="password" required>
+                    <div class="error-message" id="errorDaftarPassword">Password harus diisi.</div>
+                </div>
+                <div>
+                    <label for="daftarKonfirmasiPassword">Konfirmasi Password:</label>
+                    <input type="password" id="daftarKonfirmasiPassword" name="konfirmasiPassword" required>
+                    <div class="error-message" id="errorDaftarKonfirmasiPassword">Konfirmasi Password harus diisi.</div>
+                    <div class="error-message" id="errorPasswordMismatch" style="display:none;">Password tidak cocok.</div>
+                </div>
+                <button type="submit">Daftar Sekarang</button>
+            </form>
+            <p style="margin-top: 15px;">Sudah punya akun? <a href="#login" class="nav-link" data-target="login">Login di sini</a></p>
+        </section>
+
+    </main>
+
+    <footer>
+       <p>&copy; 2025 Perpustakaan Digital - By Rabbaanee Meiyanto Putra (241011750082) </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
